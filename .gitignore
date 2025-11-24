@@ -1,0 +1,71 @@
+# Binaries
+pdf_editor
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool
+*.out
+
+# Go workspace file
+go.work
+
+# Temporary files and directories
+temp/
+tmp/
+*.tmp
+*.temp
+
+# PDF files (except test samples)
+*.pdf
+!test/*.pdf
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+logs/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Build artifacts
+dist/
+build/
+bin/
+
+# Preview images (temporary extracted images)
+previews/
+
+# Backup files
+*.bak
+*.backup
+*~
+

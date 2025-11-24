@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.title}}</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>PDF Editor</h1>
+        <p>Upload a PDF file and apply editing operations</p>
+        <p><a href="/unwanted-elements" style="color: #4caf50; text-decoration: none; font-weight: bold;">🔍 Advanced Unwanted Elements Analysis →</a></p>
+
+        <div class="upload-section">
+            <form id="uploadForm" enctype="multipart/form-data">
+                <label for="pdfFile">Select PDF file:</label>
+                <input type="file" id="pdfFile" name="pdf" accept=".pdf" required>
+                <button type="submit">Upload PDF</button>
+            </form>
+        </div>
+
+        <div id="operations" class="operations" style="display: none;">
+            <h2>Available Operations</h2>
+
+            <!-- Analyze Unwanted Elements -->
+            <div class="operation">
+                <h3>Analyze Unwanted Elements</h3>
+                <p>Automatically detect potential unwanted elements for selective removal</p>
+                <button id="analyzeBtn">Analyze Unwanted Elements</button>
+            </div>
+
+            <div id="analysisResults" class="analysis-results" style="display: none;">
+                <h3>Unwanted Elements Analysis Results</h3>
+                <div id="analysisContent"></div>
+                <div id="elementSelection" style="display: none;">
+                    <h4>Select Elements to Remove</h4>
+                    <form id="selectiveRemovalForm">
+                        <div id="elementCheckboxes"></div>
+                        <button type="submit">Remove Selected Elements</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Resave PDF -->
+            <div class="operation">
+                <h3>Resave PDF</h3>
+                <p>Optimize and compress the PDF file</p>
+                <form class="operation-form" data-endpoint="/api/pdf/resave">
+                    <button type="submit">Resave PDF</button>
+                </form>
+            </div>
+
+            <!-- Remove Pages -->
+            <div class="operation">
+                <h3>Remove Pages</h3>
+                <p>Remove specific pages from the PDF</p>
+                <form class="operation-form" data-endpoint="/api/pdf/remove-pages">
+                    <label for="pagesInput">Pages to remove (e.g., "1,3,5-7"):</label>
+                    <input type="text" id="pagesInput" name="pages" placeholder="1,3,5-7" required>
+                    <button type="submit">Remove Pages</button>
+                </form>
+            </div>
+
+            <!-- Remove Elements -->
+            <div class="operation">
+                <h3>Remove Overlay Elements</h3>
+                <p>Remove unwanted elements and images from the PDF</p>
+                <form class="operation-form" data-endpoint="/api/pdf/remove-elements">
+                    <label for="elementType">Element type:</label>
+                    <select name="type" id="elementType">
+                        <option value="watermark">Watermark</option>
+                        <option value="image">Image</option>
+                    </select>
+                    <button type="submit">Remove Elements</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="result" class="result" style="display: none;">
+            <h2>Processing Result</h2>
+            <div id="resultContent"></div>
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
